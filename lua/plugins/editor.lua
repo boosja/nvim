@@ -1,39 +1,51 @@
---vim.cmd [[highlight IndentBlanklineIndent1 guibg=#1f1f1f gui=nocombine]]
---vim.cmd [[highlight IndentBlanklineIndent2 guibg=#1a1a1a gui=nocombine]]
-
 return {
-  "lukas-reineke/indent-blankline.nvim",
-  main = "ibl",
-  opts = {}
+	{
+		"echasnovski/mini.pairs",
+		version = "*",
+		config = function()
+			require("mini.pairs").setup()
+		end,
+	},
+
+	{
+		"HiPhish/rainbow-delimiters.nvim",
+		config = function()
+			require("rainbow-delimiters.setup").setup()
+		end,
+	},
+
+	{
+		"echasnovski/mini.surround",
+		version = "*",
+		config = function()
+			require("mini.surround").setup()
+		end,
+	},
+
+  {
+    "RRethy/vim-illuminate",
+  },
+
+	{
+		"christoomey/vim-tmux-navigator",
+		lazy = true,
+		cmd = {
+			"TmuxNavigateLeft",
+			"TmuxNavigateDown",
+			"TmuxNavigateUp",
+			"TmuxNavigateRight",
+		},
+		keys = {
+			{ "<C-h>", "<cmd><C-U>TmuxNavigateLeft<CR>" },
+			{ "<C-j>", "<cmd><C-U>TmuxNavigateDown<CR>" },
+			{ "<C-k>", "<cmd><C-U>TmuxNavigateUp<CR>" },
+			{ "<C-l>", "<cmd><C-U>TmuxNavigateRight<CR>" },
+		},
+	},
+
+	{
+		"lukas-reineke/indent-blankline.nvim",
+		main = "ibl",
+    opts = {},
+	},
 }
-
--- function M.config()
---  local ibl = require "ibl"
---
---  ibl.setup {
---    indent = {
---      char = ""
---    }
---  }
---end
-
---return M
-
--- return {
---  { "lukas-reineke/indent-blankline.nvim",
---  main = "ibl",
---  opts = {
---      show_current_context = true,
---      char = "",
---      char_highlight_list = {
---          "IndentBlanklineIndent1",
---          "IndentBlanklineIndent2",
---      },
---      space_char_highlight_list = {
---          "IndentBlanklineIndent1",
---          "IndentBlanklineIndent2",
---      },
---      show_trailing_blankline_indent = false,
---    }
---  },
---}
