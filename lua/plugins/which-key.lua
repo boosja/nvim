@@ -8,13 +8,6 @@ return {
   config = function()
     local wk = require "which-key"
 
-    wk.register({
-      ["<leader>"] = {
-        f = {
-          name = "+file",
-          f = { "<leader>ff", "Find git file" },
-        }
-      }
-    })
+    wk.register({})
   end
 }

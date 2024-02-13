@@ -7,7 +7,7 @@ return {
 
     configs.setup {
       auto_install = true, -- Auto install on entering unknown file linter
-      ensure_installed = { "lua", "javascript", "typescript" },
+      ensure_installed = { "lua", "javascript", "typescript", "tsx", "clojure" },
       highlight = { enable = true },
       indent = { enable = true },
       autopairs = { enable = true },

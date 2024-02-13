@@ -5,6 +5,16 @@ return {
     dependencies = { 'nvim-lua/plenary.nvim' },
     config = function()
       local builtin = require "telescope.builtin"
+      local wk = require "which-key"
+
+      -- wk.register({
+      --   ["<leader>"] = {
+      --     f = {
+      --       name = "+file",
+      --       f = { "<leader>ff", "Find git file", ":Telescope git_files" },
+      --     }
+      --   }
+      -- })
 
       vim.keymap.set('n', '<leader>ff', builtin.git_files, {})
       vim.keymap.set('n', '<leader>fg', builtin.live_grep, {})
