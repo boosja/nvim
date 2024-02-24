@@ -26,12 +26,21 @@ return {
 			require("conjure.main").main()
 			require("conjure.mapping")["on-filetype"]()
 		end,
-		init = function()
-			vim.g["conjure#debug"] = true
-		end,
 	},
 
-  {
-    "PaterJason/nvim-treesitter-sexp",
-  },
+	{
+		"PaterJason/nvim-treesitter-sexp",
+		config = function()
+			require("treesitter-sexp").setup({
+				keymaps = {
+					commands = {
+						slurp_left = ">(",
+						slurp_right = ">)",
+						barf_left = "<(",
+						barf_right = "<)",
+					},
+				},
+			})
+		end,
+	},
 }
