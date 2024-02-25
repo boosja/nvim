@@ -13,7 +13,7 @@ return {
         },
       })
 
-      vim.keymap.set("n", "<leader>gf", vim.lsp.buf.format, {})
+      vim.keymap.set("n", "<leader>gf", vim.lsp.buf.format, { desc = "Format file" })
     end,
   },
 
@@ -54,11 +54,20 @@ return {
 
   {
     "neovim/nvim-lspconfig",
-    lazy = false,
+    -- lazy = false,
     config = function()
-      vim.keymap.set("n", "K", vim.lsp.buf.hover, {})
-      vim.keymap.set("n", "gd", vim.lsp.buf.definition, {})
-      vim.keymap.set({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, {})
+      vim.keymap.set("n", "K", vim.lsp.buf.hover, { desc = "Show documentation" })
+      vim.keymap.set("n", "gd", vim.lsp.buf.definition, { desc = "Go to definition" })
+      vim.keymap.set("n", "gD", vim.lsp.buf.type_definition, { desc = "Go to type definition" })
+      vim.keymap.set("n", "gr", vim.lsp.buf.references, { desc = "Find references" })
+
+      vim.keymap.set("n", "<leader>cr", vim.lsp.buf.rename, { desc = "Rename symbol" })
+      vim.keymap.set({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, { desc = "Code action" })
+      vim.keymap.set("n", "<leader>cd", vim.diagnostic.open_float, { desc = "Show diagnostics for line" })
+      vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, { desc = "Go to previous diagnostic" })
+      vim.keymap.set("n", "]d", vim.diagnostic.goto_next, { desc = "Go to next diagnostic" })
+      vim.keymap.set("n", "<leader>cs", vim.diagnostic.show, { desc = "Show diagnostics for buffer" })
+      vim.keymap.set("n", "<leader>ch", vim.diagnostic.hide, { desc = "Hide diagnostics for buffer" })
     end,
   },
 }
