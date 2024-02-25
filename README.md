@@ -2,8 +2,8 @@
 
 ### Milestones
 
-- [ ] Editor commands
-- [ ] WhichKey integration
+- [x] Editor commands
+- [x] WhichKey integration
 - [x] Clojure repl output fix
-- [ ] Clojure formatting
+- [x] Clojure formatting
 - [x] Clojure commands (e.g. `slurp`, `barf`, `raise`, etc.)

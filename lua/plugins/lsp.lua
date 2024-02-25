@@ -1,38 +1,17 @@
 return {
   {
-    "nvimtools/none-ls.nvim",
-    config = function()
-      local null_ls = require("null-ls")
-
-      null_ls.setup({
-        sources = {
-          null_ls.builtins.formatting.stylua,
-          null_ls.builtins.formatting.prettier,
-          null_ls.builtins.formatting.zprint,
-          null_ls.builtins.diagnostics.eslint_d,
-        },
-      })
-
-      vim.keymap.set("n", "<leader>gf", vim.lsp.buf.format, { desc = "Format file" })
-    end,
-  },
-
-  {
-    "williamboman/mason.nvim",
-    lazy = false,
+    "neovim/nvim-lspconfig",
+    dependencies = {
+      "williamboman/mason.nvim",
+      "williamboman/mason-lspconfig.nvim",
+      "nvimtools/none-ls.nvim",
+    },
     config = function()
       require("mason").setup()
-    end,
-  },
-
-  {
-    "williamboman/mason-lspconfig.nvim",
-    lazy = false,
-    config = function()
       local mason_lspconfig = require("mason-lspconfig")
 
       mason_lspconfig.setup({
-        ensure_installed = { "lua_ls", "tsserver", "html", "clojure_lsp" },
+        ensure_installed = { "lua_ls", "tsserver", "html", "clojure_lsp", "eslint" },
       })
 
       local capabilities = require("cmp_nvim_lsp").default_capabilities()
@@ -49,13 +28,19 @@ return {
         --   require("lspconfig").lua_ls.setup({ capabilities })
         -- end
       })
-    end,
-  },
 
-  {
-    "neovim/nvim-lspconfig",
-    -- lazy = false,
-    config = function()
+      local null_ls = require("null-ls")
+      null_ls.setup({
+        sources = {
+          -- Anything not supported by mason
+          null_ls.builtins.formatting.stylua,
+          null_ls.builtins.formatting.prettier,
+          null_ls.builtins.formatting.zprint,
+        },
+      })
+
+      vim.keymap.set("n", "<leader>gf", vim.lsp.buf.format, { desc = "Format file" })
+
       vim.keymap.set("n", "K", vim.lsp.buf.hover, { desc = "Show documentation" })
       vim.keymap.set("n", "gd", vim.lsp.buf.definition, { desc = "Go to definition" })
       vim.keymap.set("n", "gD", vim.lsp.buf.type_definition, { desc = "Go to type definition" })
