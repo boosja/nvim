@@ -1,4 +1,8 @@
 return {
+  {
+    "gpanders/nvim-parinfer",
+  },
+
 	{
 		"Olical/conjure",
 		ft = { "clojure", "clojurescript", "edn" },

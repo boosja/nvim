@@ -35,7 +35,7 @@ return {
           -- Anything not supported by mason
           null_ls.builtins.formatting.stylua,
           null_ls.builtins.formatting.prettier,
-          null_ls.builtins.formatting.zprint,
+          -- null_ls.builtins.formatting.zprint,
         },
       })
 
